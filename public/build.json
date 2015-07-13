@@ -1,0 +1,4 @@
+{
+    "concatTo": "geocode-tool.min.js",
+    "minify": false
+}

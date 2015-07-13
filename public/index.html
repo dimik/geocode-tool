@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Инструмент геокодирования</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link href="//yandex.st/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/project.css" rel="stylesheet">
+
+    <script src="//yastatic.net/jquery/2.1.4/jquery.js"></script>
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU"></script>
+    <script src="build/geocode-tool.min.js"></script>
+
+    <script type="text/javascript">
+      ymaps.ready().done(function (ym) {
+        ym.modules.require('app', function (App) {
+          var app = new App();
+
+          app.init();
+        }).fail(console.log, console);
+        /*
+        var myMap = new ym.Map('ymap', {
+          center: [55.7, 37.5],
+          zoom: 10,
+          controls: ['zoomControl', 'searchControl', 'geolocationControl', 'typeSelector']
+        });
+        var objectManager = new ym.ObjectManager({
+          geoObjectBalloonContentLayout: ym.templateLayoutFactory.createClass([
+            '<h3>{{ properties.name }}</h3>',
+            '<p>{{ properties.description }}</p>'
+          ].join(''))
+        });
+        myMap.geoObjects.add(objectManager);
+        var promise;
+        ym.modules.require('ProxyGeocodeProvider', function (provider) {
+          ['Москва', 'Екатеринбург', 'Новосибирск', 'Санкт-Петербург'].forEach(function (address) {
+            promise = ym.geocode(address, { provider: provider });
+          });
+          promise.then(function (response) {
+            objectManager.add(response.data.result);
+            myMap.setBounds(objectManager.getBounds(), {
+              checkZoomRange: true
+            });
+          }).fail(function (err) {
+            console.log(err);
+          });
+        })
+        */
+      });
+    </script>
+    <style type="text/css">
+        #ymap {
+            height: 400px;
+        }
+        .header {
+          height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid" style="padding: 10px 0;">
+          <span class="brand" href="#">Инструмент множественного геокодирования</span>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <form class="form">
+            <div class="controls controls-row">
+                <label for="data-format">Формат входных данных</label>
+                <select id="data-format" class="span2">
+                  <option>CSV</option>
+                  <option>GeoJSON</option>
+                </select>
+                <!--label for="delim" class="control-label">Разделитель</label-->
+                <input type="text" class="span1 offset3" id="delim">
+                <span class="help-inline">Разделитель</span>
+            </div>
+            <div class="control-group">
+              <label for="inbox" class="control-label">Адреса или координаты через разделитель</label>
+              <div class="controls">
+                <textarea class="span12" rows="4" id="inbox"></textarea>
+              </div>
+            </div>
+              <button type="submit" class="btn btn-primary">Геокодировать</button>
+              <button type="reset" class="btn">Очистить</button>
+            <!--div class="control-group">
+              <label for="outbox" class="control-label">Результат геокодирования</label>
+              <div class="controls">
+                <textarea class="span12" disabled rows="1" id="outbox"></textarea>
+              </div>
+            </div-->
+          </form>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#map">карта</a></li>
+            <li class="active"><a href="#code">код</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="map">
+              <div id="ymap"></div>
+            </div>
+            <div class="tab-pane" id="code">
+              <div id="code"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--div class="footer row-fluid"></div-->
+    </div>
+</body>
+</html>
