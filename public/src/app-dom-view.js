@@ -9,7 +9,12 @@ ym.modules.define('app-dom-view', [
     this._setupListeners();
   }, {
     getData: function () {
-      return this._form.serialize();
+      return this._form.serializeArray()
+        .reduce(function (obj, item, index, arr) {
+          obj[item.name] = item.value;
+
+          return obj;
+        }, {});
     },
     setInboxPlaceholder: function (placeholder) {
       this._form.find('#inbox').attr('placeholder', placeholder);
@@ -34,13 +39,17 @@ ym.modules.define('app-dom-view', [
     _onFormSubmit: function (e) {
       e.preventDefault();
 
-      this.events.fire({
-        type: 'formsubmit',
-        target: this
+      this.events.fire('formsubmit', {
+        target: this,
+        fields: this.getData()
       });
     },
     _onFormReset: function (e) {
       e.preventDefault();
+
+      this.events.fire('formreset', {
+        target: this
+      });
     }
   });
 

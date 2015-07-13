@@ -4,9 +4,8 @@ ym.modules.define('base-geocode-model', [
   'proxy-geocode-provider',
   'geocode'
 ], function (provide, defineClass, extend, ProxyGeocodeProvider, geocode) {
-  var BaseGeocodeModel = defineClass(function (data, options) {
-    this._data = data || '';
-    this._options = options;
+  var BaseGeocodeModel = defineClass(function (options) {
+    this._data = options.data || '';
     this._response = null;
     this._error = null;
     this._provider = new ProxyGeocodeProvider(options.provider);
@@ -22,14 +21,20 @@ ym.modules.define('base-geocode-model', [
 
       return promise.then(this._onLoad, this._onError, this);
     },
-    /**
-     * Should be overrided
-     */
-    each: function (fn) {},
+    each: function (fn) {
+      return this;
+    },
     clear: function () {
       this._data = null;
       this._response = null;
       this._error = null;
+
+      return this;
+    },
+    setData: function (data) {
+      this._data = data;
+
+      return this;
     },
     getData: function () {
       return this._data;

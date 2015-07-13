@@ -2,8 +2,8 @@ ym.modules.define('geojson-geocode-model', [
   'util.defineClass',
   'base-geocode-model'
 ], function (provide, defineClass, BaseModel) {
-  var GeoJSONGeocodeModel = defineClass(function (data, options) {
-    GeoJSONGeocodeModel.superclass.constructor.call(this, data, options);
+  var GeoJSONGeocodeModel = defineClass(function (options) {
+    GeoJSONGeocodeModel.superclass.constructor.call(this, options);
   }, BaseModel, {
     each: function (fn) {
       var data = this._data.trim();
@@ -19,6 +19,11 @@ ym.modules.define('geojson-geocode-model', [
       data.forEach(function (it, index) {
         fn.call(this, { request: it.geometry.coordinates }, index);
       }, this);
+
+      return this;
+    },
+    getDataType: function () {
+      return 'GeoJSON';
     }
   });
 

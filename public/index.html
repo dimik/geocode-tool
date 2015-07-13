@@ -70,19 +70,19 @@
         <div class="span10 offset1">
           <form class="form">
             <div class="controls controls-row">
-                <label for="data-format">Формат входных данных</label>
-                <select id="data-format" class="span2">
+                <label for="dataType">Формат входных данных</label>
+                <select id="dataType" name="dataType" class="span2">
                   <option>CSV</option>
                   <option>GeoJSON</option>
                 </select>
                 <!--label for="delim" class="control-label">Разделитель</label-->
-                <input type="text" class="span1 offset3" id="delim">
+                <input type="text" name="delim" class="span1 offset3" id="delim">
                 <span class="help-inline">Разделитель</span>
             </div>
             <div class="control-group">
               <label for="inbox" class="control-label">Адреса или координаты через разделитель</label>
               <div class="controls">
-                <textarea class="span12" rows="4" id="inbox"></textarea>
+                <textarea class="span12" rows="4" id="inbox" name="inbox"></textarea>
               </div>
             </div>
               <button type="submit" class="btn btn-primary">Геокодировать</button>
