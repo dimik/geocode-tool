@@ -1,4 +1,4 @@
-ym.modules.define('app-map-view', [
+ym.modules.define('objects-map-view', [
   'util.defineClass',
   'Map',
   'ObjectManager',

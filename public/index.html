@@ -15,8 +15,6 @@
       ymaps.ready().done(function (ym) {
         ym.modules.require('app', function (App) {
           var app = new App();
-
-          app.init();
         }).fail(console.log, console);
         /*
         var myMap = new ym.Map('ymap', {
@@ -68,25 +66,23 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span10 offset1">
-          <form class="form">
+          <form>
             <div class="controls controls-row">
-                <label for="dataType">Формат входных данных</label>
-                <select id="dataType" name="dataType" class="span2">
-                  <option>CSV</option>
-                  <option>GeoJSON</option>
-                </select>
-                <!--label for="delim" class="control-label">Разделитель</label-->
-                <input type="text" name="delim" class="span1 offset3" id="delim">
-                <span class="help-inline">Разделитель</span>
+              <label for="dataType">Формат данных</label>
+              <select id="dataType" class="span2">
+                <option>CSV</option>
+                <option>GeoJSON</option>
+              </select>
+              <input type="text" id="delim" class="span1" style="width:30px;" maxlength="2">
             </div>
-            <div class="control-group">
-              <label for="inbox" class="control-label">Адреса или координаты через разделитель</label>
-              <div class="controls">
-                <textarea class="span12" rows="4" id="inbox" name="inbox"></textarea>
-              </div>
+            <div class="controls">
+              <label for="request" class="control-label">Адреса или координаты через разделитель</label>
+              <textarea class="span12" rows="4" id="request"></textarea>
             </div>
+            <div class="controls">
               <button type="submit" class="btn btn-primary">Геокодировать</button>
               <button type="reset" class="btn">Очистить</button>
+            </div>
             <!--div class="control-group">
               <label for="outbox" class="control-label">Результат геокодирования</label>
               <div class="controls">
