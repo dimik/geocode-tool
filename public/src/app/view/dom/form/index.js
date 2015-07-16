@@ -11,6 +11,16 @@ ym.modules.define('form-dom-view', [
     this._setupListeners();
     this._setState(CSVFormState);
   }, {
+    render: function (data) {
+      jQuery('#response').val(JSON.stringify(data));
+
+      return this;
+    },
+    clear: function () {
+      jQuery('#response').val('');
+
+      return this;
+    },
     getRequestData: function () {
       return this._state.getRequestDataView();
     },

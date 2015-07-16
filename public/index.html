@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link href="//yandex.st/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/project.css" rel="stylesheet">
 
     <script src="//yastatic.net/jquery/2.1.4/jquery.js"></script>
+    <script src="//yastatic.net/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//api-maps.yandex.ru/2.1/?lang=ru-RU"></script>
     <script src="build/geocode-tool.min.js"></script>
 
@@ -95,15 +95,17 @@
       <div class="row-fluid">
         <div class="span10 offset1">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#map">карта</a></li>
-            <li class="active"><a href="#code">код</a></li>
+            <li class="active"><a href="#map" data-toggle="tab">карта</a></li>
+            <li><a href="#code" data-toggle="tab">код</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="map">
               <div id="ymap"></div>
             </div>
             <div class="tab-pane" id="code">
-              <div id="code"></div>
+              <div>
+                <textarea class="span12" rows="14" id="response"></textarea>
+              </div>
             </div>
           </div>
         </div>

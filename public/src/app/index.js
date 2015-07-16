@@ -32,9 +32,14 @@ ym.modules.define('app', [
       this._mapView.clear();
     },
     _onRequestSuccess: function () {
+      var response = this._geocodeModel.data.get('response.result');
+
       this._mapView
         .clear()
-        .render(this._geocodeModel.data.get('response.result'));
+        .render(response);
+      this._formView
+        .clear()
+        .render(response);
     }
   });
 
