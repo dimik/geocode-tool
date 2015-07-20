@@ -34,7 +34,6 @@ function geocode(req, res, next) {
   geocoder.geocode(inbox)
     .then(function (data) {
       data.stat = reqStat.get();
-      dailyStat.update(data.stat);
       res.status(200).json(data);
     });
 }
