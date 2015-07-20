@@ -12,6 +12,10 @@ ym.modules.define('app-config', [
         suppressMapOpenBlock: true
       }
     },
+    stat: {
+      url: 'http://localhost:8888/api/geocode/v1/stat/',
+      method: 'GET'
+    },
     geocodeProvider: {
       url: 'http://localhost:8888/api/geocode/v1/',
       method: 'POST'
@@ -29,7 +33,7 @@ ym.modules.define('app-config', [
       GeoJSON: {
         request: {
           label: 'Координаты в формате GeoJSON',
-          placeholder: '[{ "geometry": { "type": "Point", coordinates: [55.7, 37.5] }}, { "geometry": { "type": "Point", coordinates: [55.7, 37.5] }}]',
+          placeholder: '{"type":"FeatureCollection","features":[\n\t{"type":"Feature","geometry":{"type":"Point","coordinates":[55.75396,37.620393]}},\n\t{"type":"Feature","geometry":{"type":"Point","coordinates":[59.939095,30.315868]}},\n\t{"type":"Feature","geometry":{"type":"Point","coordinates":[55.030199,82.92043]}}\n]}',
         }
       }
     }

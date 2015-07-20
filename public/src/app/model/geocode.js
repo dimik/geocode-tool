@@ -9,7 +9,7 @@ ym.modules.define('geocode-model', [
   'proxy-geocode-provider'
 ], function (provide, defineClass, extend, EventManager, DataManager, OptionManager, Monitor, geocode) {
   /**
-   * Geodoe Model Class.
+   * Geocode Model Class.
    * @class
    * @name GeocodeModel
    * @param {Object} [options] Geocode options.
