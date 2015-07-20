@@ -3,8 +3,8 @@
     "hostname": "localhost",
     "port": 8888
   },
-  "redis": {
-    "hostname": "localhost",
-    "port": 6379
+  "limit": {
+    "request": 100,
+    "daily": 25000
   }
 }
