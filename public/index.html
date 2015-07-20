@@ -25,63 +25,63 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container-fluid" style="padding: 10px 0;">
-          <div class="row-fluid">
-            <div class="span7 offset1">
-              <span class="brand" href="#">Инструмент множественного геокодирования</span>
-            </div>
-            <div id="stat" class="span3 text-right" style="padding: 10px 0; font-size: 95%;">
-              запросов&nbsp;за&nbsp;сутки&nbsp;в&nbsp;<strong>геокодер</strong>&nbsp;<span class="badge badge-warning">1200</span>&nbsp;
-              <strong>кэш</strong>&nbsp;<span class="badge badge-success">800</span>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container-fluid" style="padding: 10px 0;">
+        <div class="row-fluid">
+          <div class="span7 offset1">
+            <span class="brand" href="#">Инструмент множественного геокодирования</span><span class="badge badge-info" style="font-weight: 90%; margin:20px 0 0 -15px;">бета</span>
+          </div>
+          <div id="stat" class="span3 text-right" style="padding: 10px 0; font-size: 95%;">
+            запросов&nbsp;за&nbsp;сутки&nbsp;в&nbsp;<strong>геокодер</strong>&nbsp;<span id="miss" class="badge badge-warning">0</span>&nbsp;
+            <strong>кэш</strong>&nbsp;<span id="hit" class="badge badge-success">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <form>
+          <div class="controls controls-row">
+            <label for="dataType">Формат данных</label>
+            <select id="dataType" class="span2">
+              <option>CSV</option>
+              <option>GeoJSON</option>
+            </select>
+            <input type="text" id="delim" class="span1" style="width:30px;" maxlength="2">
+          </div>
+          <div class="controls">
+            <label for="request" class="control-label">Адреса или координаты через разделитель</label>
+            <textarea class="span12" rows="4" id="request"></textarea>
+            <p class="pull-right muted" style="margin-top:-8px;"><small>не более <strong class="text-info">100</strong> объектов</small></p>
+          </div>
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">Геокодировать</button>
+            <button type="reset" class="btn">Очистить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#map" data-toggle="tab">карта</a></li>
+          <li><a href="#code" data-toggle="tab">код</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="map">
+            <div id="ymap"></div>
+          </div>
+          <div class="tab-pane" id="code">
+            <div>
+              <textarea class="span12" rows="20" id="response"></textarea>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <form>
-            <div class="controls controls-row">
-              <label for="dataType">Формат данных</label>
-              <select id="dataType" class="span2">
-                <option>CSV</option>
-                <option>GeoJSON</option>
-              </select>
-              <input type="text" id="delim" class="span1" style="width:30px;" maxlength="2">
-            </div>
-            <div class="controls">
-              <label for="request" class="control-label">Адреса или координаты через разделитель</label>
-              <textarea class="span12" rows="4" id="request"></textarea>
-              <p class="pull-right muted" style="margin-top:-8px;"><small>не более <strong class="text-info">100</strong> объектов</small></p>
-            </div>
-            <div class="controls">
-              <button type="submit" class="btn btn-primary">Геокодировать</button>
-              <button type="reset" class="btn">Очистить</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#map" data-toggle="tab">карта</a></li>
-            <li><a href="#code" data-toggle="tab">код</a></li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="map">
-              <div id="ymap"></div>
-            </div>
-            <div class="tab-pane" id="code">
-              <div>
-                <textarea class="span12" rows="20" id="response"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
 </body>
 </html>
