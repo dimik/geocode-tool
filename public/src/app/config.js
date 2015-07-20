@@ -13,7 +13,7 @@ ym.modules.define('app-config', [
       }
     },
     geocodeProvider: {
-      url: 'http://localhost:8888',
+      url: 'http://localhost:8888/api/geocode/v1/',
       method: 'POST'
     },
     form: {
