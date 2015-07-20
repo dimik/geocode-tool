@@ -6,7 +6,7 @@ ym.modules.define('app-config', [
       state: {
         center: [55.751574, 37.573856],
         zoom: 9,
-        controls: ['zoomControl', 'geolocationControl', 'typeSelector']
+        controls: ['zoomControl', 'geolocationControl', 'typeSelector', 'fullscreenControl']
       },
       options: {
         suppressMapOpenBlock: true
