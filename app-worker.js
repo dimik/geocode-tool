@@ -8,10 +8,9 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var logger = require('./lib/logger');
-var MultiGeocoder = require('multi-geocoder');
-var geocoder = new MultiGeocoder({ provider: 'yandex', coordorder: 'latlong' });
 
 var app = express();
+var api = require('./routes');
 
 app.set('json spaces', 2);
 app.use(bodyParser.json({ limit: 100000000 }));
@@ -21,7 +20,7 @@ app.use(function (req, res, next) {
 });
 app.use(cors);
 app.use(uncaughtExceptionHandler);
-app.use(router);
+app.use('/api/geocode/v1', api);
 app.use(errorHandler);
 
 var host = config.get('server:hostname');
@@ -30,18 +29,14 @@ var server = app.listen(port, host, function () {
   logger.info(util.format('Node server started on %s:%d', host, port));
 });
 
-router.route('/')
-  .post(getFeatures);
-
-geocoder.getProvider().getText = function (point) {
-  return point.request;
-};
-
-function getFeatures(req, res, next) {
-    geocoder.geocode(req.body)
-    .then(res.json, res);
-}
-
+/**
+ * Expressjs middleware for CORS support.
+ * @function
+ * @name cors
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {Function} next Express Middleware callback
+ */
 function cors(req, res, next) {
   if(req.headers['origin']) {
     res.set({
