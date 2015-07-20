@@ -10,9 +10,12 @@ function createWorker() {
   logger.info(util.format('Worker %d forked', worker.process.pid));
 }
 
+/*
 for(var i = 0; i < numCPUs; i++) {
   createWorker();
 }
+*/
+  createWorker();
 
 cluster.on('exit', function (worker, code, signal) {
   logger.alert(util.format('Worker %d died (%s).', worker.process.pid, signal || code));
