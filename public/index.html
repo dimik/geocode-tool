@@ -12,46 +12,15 @@
     <script src="build/geocode-tool.min.js"></script>
 
     <script type="text/javascript">
-      ymaps.ready().done(function (ym) {
-        ym.modules.require('app', function (App) {
-          var app = new App();
-        }).fail(console.log, console);
-        /*
-        var myMap = new ym.Map('ymap', {
-          center: [55.7, 37.5],
-          zoom: 10,
-          controls: ['zoomControl', 'searchControl', 'geolocationControl', 'typeSelector']
+      ymaps.ready(function () {
+        ymaps.modules.require('app', function (App) {
+          new App;
         });
-        var objectManager = new ym.ObjectManager({
-          geoObjectBalloonContentLayout: ym.templateLayoutFactory.createClass([
-            '<h3>{{ properties.name }}</h3>',
-            '<p>{{ properties.description }}</p>'
-          ].join(''))
-        });
-        myMap.geoObjects.add(objectManager);
-        var promise;
-        ym.modules.require('ProxyGeocodeProvider', function (provider) {
-          ['Москва', 'Екатеринбург', 'Новосибирск', 'Санкт-Петербург'].forEach(function (address) {
-            promise = ym.geocode(address, { provider: provider });
-          });
-          promise.then(function (response) {
-            objectManager.add(response.data.result);
-            myMap.setBounds(objectManager.getBounds(), {
-              checkZoomRange: true
-            });
-          }).fail(function (err) {
-            console.log(err);
-          });
-        })
-        */
       });
     </script>
     <style type="text/css">
         #ymap {
             height: 400px;
-        }
-        .header {
-          height: 60px;
         }
     </style>
 </head>
@@ -92,12 +61,6 @@
               <button type="submit" class="btn btn-primary">Геокодировать</button>
               <button type="reset" class="btn">Очистить</button>
             </div>
-            <!--div class="control-group">
-              <label for="outbox" class="control-label">Результат геокодирования</label>
-              <div class="controls">
-                <textarea class="span12" disabled rows="1" id="outbox"></textarea>
-              </div>
-            </div-->
           </form>
         </div>
       </div>
@@ -119,7 +82,6 @@
           </div>
         </div>
       </div>
-      <!--div class="footer row-fluid"></div-->
     </div>
 </body>
 </html>
