@@ -59,7 +59,15 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-fluid" style="padding: 10px 0;">
-          <span class="brand" href="#">Инструмент множественного геокодирования</span>
+          <div class="row-fluid">
+            <div class="span7 offset1">
+              <span class="brand" href="#">Инструмент множественного геокодирования</span>
+            </div>
+            <div id="stat" class="span3 text-right" style="padding: 10px 0; font-size: 95%;">
+              запросов&nbsp;за&nbsp;сутки&nbsp;в&nbsp;<strong>геокодер</strong>&nbsp;<span class="badge badge-warning">1200</span>&nbsp;
+              <strong>кэш</strong>&nbsp;<span class="badge badge-success">800</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -78,6 +86,7 @@
             <div class="controls">
               <label for="request" class="control-label">Адреса или координаты через разделитель</label>
               <textarea class="span12" rows="4" id="request"></textarea>
+              <p class="pull-right muted" style="margin-top:-8px;"><small>не более <strong class="text-info">100</strong> объектов</small></p>
             </div>
             <div class="controls">
               <button type="submit" class="btn btn-primary">Геокодировать</button>
@@ -104,7 +113,7 @@
             </div>
             <div class="tab-pane" id="code">
               <div>
-                <textarea class="span12" rows="14" id="response"></textarea>
+                <textarea class="span12" rows="20" id="response"></textarea>
               </div>
             </div>
           </div>
