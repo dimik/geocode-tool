@@ -27,7 +27,7 @@
     "inherit": "~2.2.2",
     "body-parser": "~1.13.2",
     "vow": "~0.4.10",
-    "multi-geocoder": "~0.1.2"
+    "multi-geocoder": "~0.1.3"
   },
   "devDependencies": {},
   "bundleDependencies": [],
