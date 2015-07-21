@@ -1,7 +1,7 @@
 {
   "server": {
     "hostname": "localhost",
-    "port": 8888
+    "port": 8887
   },
   "limit": {
     "request": 100,

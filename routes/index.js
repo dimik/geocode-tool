@@ -14,7 +14,7 @@ provider.getText = function (point) {
   return point.request;
 };
 
-router.route('/')
+router.route('/geocode')
   .post(geocode);
 
 router.route('/stat')
