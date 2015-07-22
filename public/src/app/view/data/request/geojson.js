@@ -5,7 +5,12 @@ ym.modules.define('geojson-request-data-view', [
     this._data = (params.request || '').trim();
   }, {
     each: function (fn, ctx) {
-      var data = JSON.parse(this._data);
+      try {
+        var data = JSON.parse(this._data);
+      }
+      catch(e) {
+        return;
+      }
 
       (data.features || data).forEach(function (feature) {
         fn.call(ctx, feature.geometry.coordinates.join());
