@@ -7,7 +7,7 @@ ym.modules.define('csv-request-data-view', [
   }, {
     each: function (fn, ctx) {
       this._data.split(this._delim)
-        filter(function (it) {
+        .filter(function (it) {
           return it.length > 0;
         }).forEach(fn, ctx);
     },
