@@ -1,7 +1,8 @@
 ym.modules.define('component.xhr', [
   'vow',
-  'component.querystring'
-], function (provide, vow, querystring) {
+  'component.querystring',
+  'component.error'
+], function (provide, vow, querystring, Error) {
   var XMLHttpRequest = window.XDomainRequest || window.XMLHttpRequest;
   var parseHeaders = function (headers) {
     return headers.split('\u000d\u000a').reduce(function (result, line) {
@@ -45,6 +46,10 @@ ym.modules.define('component.xhr', [
     }
 
     xhr.onload = function () {
+      if(this.status >= 400) {
+        return xhr.onerror();
+      }
+
       var headers = this.getAllResponseHeaders();
       var cType = this.getResponseHeader('Content-Type') || 'text/plain';
       var response = cType.indexOf('xml') > -1 && this.responseXML || this.response || this.responseText;
@@ -54,10 +59,10 @@ ym.modules.define('component.xhr', [
           response = JSON.parse(response);
         }
         catch(e) {
-          return defer.reject({
+          return defer.reject(new Error({
             code: 500,
             message: 'JSON Parse Error ' + e.message
-          });
+          }));
         }
       }
 
