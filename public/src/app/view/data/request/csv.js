@@ -6,18 +6,10 @@ ym.modules.define('csv-request-data-view', [
     this._delim = params.delim || '~';
   }, {
     each: function (fn, ctx) {
-      var data = this._data;
-      var delim = this._delim;
-      var dlen = delim.length;
-      var lastIndex = 0;
-      var index = data.indexOf(delim);
-
-      do {
-        index - lastIndex > dlen && fn.call(ctx, data.slice(lastIndex + dlen, index));
-        lastIndex = index;
-      }
-      while((index = data.indexOf(delim, index + dlen)) > -1)
-      lastIndex + dlen < data.length && fn.call(ctx, data.slice(lastIndex + dlen));
+      this._data.split(this._delim)
+        filter(function (it) {
+          return it.length > 0;
+        }).forEach(fn, ctx);
     },
     valueOf: function () {
       return this._data;
