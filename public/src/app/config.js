@@ -17,7 +17,7 @@ ym.modules.define('app-config', [
       method: 'GET'
     },
     geocodeProvider: {
-      url: 'http://localhost:8887/geocode-tool/api/v1/geocode',
+      url: 'http://localhost:8887/geocode-tool/api/v1/geocode/',
       method: 'POST'
     },
     form: {
