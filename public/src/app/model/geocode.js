@@ -36,7 +36,9 @@ ym.modules.define('geocode-model', [
         promise = geocode(it, extend({}, this.options.getAll(), options));
       }, this);
 
-      return promise.then(this._onRequestSuccess, this._onRequestFail, this);
+      if(promise) {
+        return promise.then(this._onRequestSuccess, this._onRequestFail, this);
+      }
     },
     /**
      * Destroys model.
@@ -50,7 +52,19 @@ ym.modules.define('geocode-model', [
     },
     _setupMonitors: function () {
       this._dataMonitor = new Monitor(this.data);
-      this._dataMonitor.add('request', this._onRequestChange, this);
+      this._dataMonitor.add('request', this._onRequestChange, this, {
+        compareCallbacks: {
+          request: function (newValue, oldValue) {
+            if(newValue && newValue.valueOf()) {
+              if(oldValue && oldValue.valueOf()) {
+                return newValue.valueOf() !== oldValue.valueOf();
+              }
+              return true;
+            }
+            return false;
+          }
+        }
+      });
       this._optionMonitor = new Monitor(this.options);
       this._optionMonitor.add(['boundedBy', 'strictBounds'], this._onRequestChange, this);
     },
