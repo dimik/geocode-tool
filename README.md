@@ -1,24 +1,24 @@
 NodeJS Geocode Tool
 ============
 
-Geocode Tool provides an ability to geocode addresses list using simple web interface and without any programming skills.
+Geocode Tool allows to geocode an address list using a simple web interface.
 
 Description
 ============
 
-Building WebMap application you could often faced with task of address-to-coordinates (longitude-lattitude) convertion for every object in your DataBase.
-Depending on number of objects solution requires different approaches from simple "by hand" to building complicated client-server systems with caching and requests multiplication.
+Building WebMap application you often face a task of address-to-coordinates convertion for every object in your DataBase.
+Depending on a number of objects this task can be solved manually or by creating complex client-server system with caching and requests multiplication.
 
-We've decided to provide this online application as a ready-made solution for small businesses with very few number of objects
-and as an example of effective productive and smart application for projects with large amount of data.
+We've decided to provide this online application as a ready-made solution for small business with a few number of objects
+as well as an example of efficient and smart application for projects with a large amount of data.
 
 Installation
 ------------
-For using this tool locally you have to install <a href="https://nodejs.org/">NodeJS</a> with NPM and any kind of WebServer e.g. Nginx
-Clone this repo to your Work folder and run ```cd geocode-tool && npm install```
+For using this tool locally you have to install <a href="https://nodejs.org/">NodeJS</a> with NPM and any kind of WebServer e.g. Nginx.
+Clone this repo to your Work folder and run ```cd geocode-tool && npm install```.
 Start server with ``` node server.js``` command.
 
-You could use this nginx config example to setup you server.
+You can use this nginx config example to setup your own server.
 ```
 server {
   listen 80;
