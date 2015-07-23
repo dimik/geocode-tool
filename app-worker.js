@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 });
 app.use(cors);
 app.use(uncaughtExceptionHandler);
-app.use('/geocode-tool/api/v1', api);
+app.use('/api/v1', api);
 app.use(errorHandler);
 
 var host = config.get('server:hostname');
