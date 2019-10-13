@@ -41,3 +41,24 @@ server {
   }
 }
 ```
+
+Docker
+------------
+For run this tool as a docker container you have to do next:
+1) clone this repo 
+2) put your yandex API key in `config/global.json`
+2.1) if you want to use web ui also put APi key to `piblic/index.html`
+like so
+```html
+<script src="//api-maps.yandex.ru/2.1/?lang=ru-RU&apikey=YOUR_APIKEY_HERE"></script>
+```
+3) build your own image 
+```shell
+docker build -t geocode-tool:v1 .
+```
+
+4) and run it
+```shell
+docker run -d -p 8887:8887 geocode-tool:v1
+```  
+P.S. I using the same nginx config as above for proxy requests from my domain name to geocode-tool 

@@ -10,6 +10,13 @@ var provider = geocoder.getProvider();
 var reqStat = new CacheStat(provider);
 var dailyStat = new DailyCacheStat(provider);
 
+var getRequestParams = provider.getRequestParams;
+provider.getRequestParams = function () {
+  var result = getRequestParams.apply(provider, arguments);
+  result.apikey = config.get('yandex:apikey');
+  return result;
+};
+
 provider.getText = function (point) {
   return point.request;
 };
