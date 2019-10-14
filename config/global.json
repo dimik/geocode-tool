@@ -1,7 +1,10 @@
 {
   "server": {
-    "hostname": "localhost",
+    "hostname": "0.0.0.0",
     "port": 8887
+  },
+  "yandex": {
+    "apikey"  : "YOUR_APIKEY_HERE"
   },
   "limit": {
     "request": 100,
